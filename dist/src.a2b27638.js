@@ -183,11 +183,11 @@ var addDays = function addDays(date, days) {
 var getDateWithoutWorkingDates = function getDateWithoutWorkingDates() {
   var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
   var days = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  if (days = 0 && !date.toString().includes(["SAT", "SUN"])) {
-    return date;
-  } else if (date.toString().includes(["SAT", "SUN"])) {
+  if (date.toString().includes("Sat") || date.toString().includes("Sun")) {
     var newDate = addDays(date, 1);
     return getDateWithoutWorkingDates(newDate, days);
+  } else if (days === 0) {
+    return date;
   } else {
     var _newDate = addDays(date, 1);
     var newDays = days - 1;
@@ -195,11 +195,11 @@ var getDateWithoutWorkingDates = function getDateWithoutWorkingDates() {
   }
 };
 var today = new Date();
-var daysToAdd = 5;
+var daysToAdd = 11;
 document.getElementById("app").innerHTML = "Get a date without weekends";
-document.getElementById("date").innerHTML = "Date: ".concat(today);
-document.getElementById("daysToAdd").innerHTML = "Days to add: ".concat(daysToAdd);
-document.getElementById("result").innerHTML = "Result: ".concat(getDateWithoutWorkingDates(today, daysToAdd));
+document.getElementById("date").innerHTML = "Today date: ".concat(today);
+document.getElementById("daysToAdd").innerHTML = "daysToAdd: ".concat(daysToAdd);
+document.getElementById("result").innerHTML = "result: ".concat(getDateWithoutWorkingDates(today, daysToAdd));
 },{"./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
